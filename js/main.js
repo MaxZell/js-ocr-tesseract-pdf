@@ -107,7 +107,22 @@ async function initTesseract() {
 
 async function extractText() {
     await initTesseract();
-    let imageString = document.getElementById('canvas').toDataURL();
+    // let imageString = document.getElementById('canvas').toDataURL();
+
+    let canvas = document.getElementById('canvas'); 
+    let ctx = canvas.getContext('2d'); 
+    // Convert the image to grayscale 
+    let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height); 
+    for (let i = 0; i < imageData.data.length; i += 4) { 
+        let avg = (imageData.data[i] + imageData.data[i + 1] + imageData.data[i + 2]) / 3; 
+        imageData.data[i] = avg;// Red
+        imageData.data[i + 1] = avg; // Green 
+        imageData.data[i + 2] = avg; // Blue 
+        // Alpha (imageData.data[i + 3]) stays the same 
+    } 
+    ctx.putImageData(imageData, 0, 0);
+    let imageString = canvas.toDataURL();
+
     let image = await loadImage(imageString);
     const { data: { text } } = await tesseractWorker.recognize(image);
     document.getElementById('extracted-text').textContent = text;
