@@ -52,6 +52,14 @@ function renderPage(num) {
       document.getElementById('page_num').textContent = num;
 }
 
+function setExtracting(stat){
+    if (stat) {
+
+    } else {
+        
+    }
+}
+
 function queueRenderPage(num) {
     if (pageRendering) {
         pageNumPending = num;
@@ -106,6 +114,7 @@ async function initTesseract() {
 }
 
 async function extractText() {
+    document.getElementById('extracted-text').textContent = 'Extracting text...';
     await initTesseract();
     // let imageString = document.getElementById('canvas').toDataURL();
 
