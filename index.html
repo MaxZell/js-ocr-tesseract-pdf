@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.269/pdf_viewer.min.css" integrity="sha512-XYRLVU5scloPRU41FDEe7++i3JZRdR0jwy48SVx1fPptEhzQgMp/gagTyNwZXoNRhNH/A3Aj3emakRatx2OjbQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>OCR With JS</title>
+</head>
+<body class="bg-gray-100 h-screen flex items-center justify-center">
+    <div class="flex h-full w-full">
+        <!-- Left Column - PDF Viewer -->
+        <div class="w-1/2 p-4 flex-grow flex flex-col">
+            <!-- PDF Viewer Container -->
+            <div id="pdfViewer" class="border border-gray-300 flex-grow mb-4 flex items-center justify-center">
+                <canvas id="canvas"></canvas>
+            </div>
+
+            <div class="flex mb-4">
+                <button class="bg-blue-500 text-white px-4 py-2 rounded mr-2" id="prev">Previous</button>
+                <button class="bg-blue-500 text-white px-4 py-2 rounded" id="next">Next</button>
+                <span class="text-gray-600 ml-2">Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+            </div>
+
+            <label for="uploadPDF" class="block text-sm font-medium text-gray-700">Choose a PDF file:</label>
+                <input type="file" id="uploadPDF" class="mt-1 p-2 border rounded-md" accept="application/pdf">
+
+        </div>
+
+        <!-- Right Column - Textbox for Extracted Text -->
+        <div class="w-1/2 p-4 flex-grow">
+            <textarea class="w-full h-full border border-gray-300 p-2" id="extracted-text" placeholder="Extracted Text"></textarea>
+        </div>
+    </div>
+
+    <script src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.269/pdf.min.mjs" type="module"></script>
+    <script src="./js/main.js" type="module"></script>
+</body>
+</html>
