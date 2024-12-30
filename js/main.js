@@ -102,7 +102,7 @@ function readFileAsDataURL(file) {
 }
 
 async function initTesseract() {
-    tesseractWorker = await Tesseract.createWorker('eng', 1, {workerPath: 'https://cdn.jsdelivr.net/npm/tesseract.js@v5.0.0/dist/worker.min.js'});
+    tesseractWorker = await Tesseract.createWorker('deu', 1, {workerPath: 'https://cdn.jsdelivr.net/npm/tesseract.js@v5.0.0/dist/worker.min.js'});
 }
 
 async function extractText() {
