@@ -20,7 +20,7 @@ async function showPDF(pdfData) {
     
   }, function (reason) {
     // PDF loading error
-    console.error(reason);
+    alert(reason);
   });
 }
 
@@ -50,14 +50,6 @@ function renderPage(num) {
         });
       });
       document.getElementById('page_num').textContent = num;
-}
-
-function setExtracting(stat){
-    if (stat) {
-
-    } else {
-        
-    }
 }
 
 function queueRenderPage(num) {
