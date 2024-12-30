@@ -41,6 +41,7 @@ function renderPage(num) {
         };
         var renderTask = page.render(renderContext);
         renderTask.promise.then(function () {
+          document.getElementById('extracted-text').textContent = 'Extracting text...';
           extractText();
           pageRendering = false;
           if (pageNumPending !== null) {
@@ -114,7 +115,6 @@ async function initTesseract() {
 }
 
 async function extractText() {
-    document.getElementById('extracted-text').textContent = 'Extracting text...';
     await initTesseract();
     // let imageString = document.getElementById('canvas').toDataURL();
 
